@@ -15,10 +15,10 @@ class NASAParser:
     def print_asteroids(self, data):
         for day, value in data["near_earth_objects"].items():
             print(f"----------{day}----------")
-            for asteroin in value:
-                print(f"Name: {asteroin["name"]}")
-                print(f"Danger level: { "not dangerous" if asteroin["is_potentially_hazardous_asteroid"] == False else "potentially dangerous"}")
-                print(f"Speed: {asteroin["close_approach_data"][0]["relative_velocity"]["kilometers_per_hour"]} km/h")
+            for asteroid in value:
+                print(f"Name: {asteroid["name"]}")
+                print(f"Danger level: { "not dangerous" if asteroid["is_potentially_hazardous_asteroid"] == False else "potentially dangerous"}")
+                print(f"Speed: {asteroid["close_approach_data"][0]["relative_velocity"]["kilometers_per_hour"]} km/h")
                 print("------------------------------")
             print()
     
