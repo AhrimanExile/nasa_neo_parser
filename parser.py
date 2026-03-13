@@ -1,14 +1,14 @@
 import requests
 import json
-
-API_KEY = "QujXMHOAw9xfWcAS0EkCovysVE3AKsQkckF9n9Gm"
+from config import API_KEY, BASE_URL
 
 class NASAParser:
-    def __init__(self, api_key):
+    def __init__(self, api_key, base_url):
         self.api_key = api_key
+        self.base_url = base_url
     
     def get_asteroids(self, start_date, end_date):
-        url = f"https://api.nasa.gov/neo/rest/v1/feed?start_date={start_date}&end_date={end_date}&api_key={self.api_key}"
+        url = f"{self.base_url}?start_date={start_date}&end_date={end_date}&api_key={self.api_key}"
         response = requests.get(url)
         data = response.json()
         return data
@@ -26,9 +26,3 @@ class NASAParser:
     def save_to_json(self, data, filename):
         with open(filename, "w") as f:
             json.dump(data, f, indent=2)
-
-
-asteroids = NASAParser(API_KEY)
-data = asteroids.get_asteroids("2024-01-01", "2024-01-07")
-asteroids.print_asteroids(data)
-asteroids.save_to_json(data, "NEO_asteroids.json")
