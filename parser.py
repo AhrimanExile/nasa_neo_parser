@@ -1,6 +1,5 @@
 import requests
 import json
-from config import API_KEY, BASE_URL
 
 class NASAParser:
     def __init__(self, api_key, base_url):
