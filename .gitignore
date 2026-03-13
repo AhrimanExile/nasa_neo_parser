@@ -1,0 +1,4 @@
+NEO_asteroids.json
+__pycache__/
+*.pyc
+.env
